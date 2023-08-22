@@ -1,0 +1,47 @@
+networks:
+  default:
+
+volumes:
+  db-data:
+
+services:
+  web:
+    image: php:apache
+    networks:
+      - default
+    ports:
+      - "8080:80"
+    volumes:
+      - ./web:/var/www/html
+    environment:
+      DB_HOST: ${DB_HOST}
+      DB_DATABASE: ${DB_DATABASE}
+      DB_USER: ${DB_USER}
+      DB_PASSWORD: ${DB_PASSWORD}
+    depends_on:
+      - db
+    command: "/bin/sh -c 'docker-php-ext-install mysqli && docker-php-ext-enable mysqli && exec docker-php-entrypoint apache2-foreground'"
+
+  phpmyadmin:
+    image: phpmyadmin
+    networks:
+      - default
+    ports:
+      - "8081:80"
+    environment:
+      PMA_HOST: ${DB_HOST}
+    depends_on:
+      - db
+
+  db:
+    image: mysql
+    networks:
+      - default
+    volumes:
+      - db-data:/var/lib/mysql
+      - ./mysql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    environment:
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_ROOT_PASSWORD: ${DB_ROOT_PASSWORD}
+      MYSQL_USER: ${DB_USER}
+      MYSQL_PASSWORD: ${DB_PASSWORD}

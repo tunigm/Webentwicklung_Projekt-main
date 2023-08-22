@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <script defer src="script.js"></script>
+    <title>Benutzerinformationen bearbeiten</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>Benutzerinformationen bearbeiten</h1>
+        </header>
+
+        <main>
+            <section class="user-info">
+                <h2>Benutzerinformationen bearbeiten</h2>
+                <form action="backend/save.php" method="post" enctype="multipart/form-data">
+                    <label for="username">
+                        <span>Nutzername:</span>
+                        <input id="username" type="text" name="username" required>
+                    </label>
+
+                    <label for="email">
+                        <span>E-Mail:</span>
+                        <input id="email" type="email" name="email" required>
+                    </label>
+
+                    <label for="password">
+                        <span>Passwort:</span>
+                        <input id="password" type="password" name="password" required>
+                    </label>
+
+                    <label for="street">
+                        <span>Straße:</span>
+                        <input id="street" type="text" name="street" required>
+                    </label>
+
+                    <label for="plz">
+                        <span>PLZ:</span>
+                        <input id="plz" type="text" name="plz" required pattern="[0-9]{5}">
+                    </label>
+
+                    <label for="location">
+                        <span>Ort:</span>
+                        <input id="location" type="text" name="location" required>
+                    </label>
+
+                    <label for="profile-picture">
+                        <span>Profilbild auswählen:</span>
+                            <img src="Bild_1.jpg" width="100" height="100">
+                            <input type="radio" id="profile_picture" name="profile_picture" required value="Bild_1">
+                            <img src="Bild_2.jpg" width="100" height="100">
+                            <input type="radio" id="profile_picture" name="profile_picture" required value="Bild_2">
+                    </label>
+
+                    <button type="submit" id="save-button">Speichern</button>
+                </form>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>Florian Keller, Kawa Dietrich, Tunahan Gümüs</p>
+    </footer>
+</body>
+</html>

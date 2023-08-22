@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <!-- ... Metatags und Stylesheets ... -->
+    <title>Anmeldung</title>
+</head>
+<body>
+    <div class="wrapper">
+        <header>
+            <h1>Anmeldung</h1>
+        </header>
+
+        <main>
+            <section class="user-info">
+                <h2>Melde dich an</h2>
+                <form action="backend/login.php" method="post">
+                    <label for="username">
+                        <span>Nutzername:</span>
+                        <input id="username" type="text" name="username" required>
+                    </label>
+
+                    <label for="password">
+                        <span>Passwort:</span>
+                        <input id="password" type="password" name="password" required>
+                    </label>
+
+                    <button type="submit" id="login-button">Anmelden</button>
+                </form>
+                <p>Noch kein Konto? <a href="register.html">Hier registrieren</a></p>
+            </section>
+        </main>
+    </div>
+
+    <footer>
+        <p>Florian Keller, Kawa Dietrich, Tunahan Gümüs</p>
+    </footer>
+</body>
+</html>
